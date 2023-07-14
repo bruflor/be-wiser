@@ -1,0 +1,20 @@
+services:
+  db_wiser:
+    container_name: db_wiser
+    image: postgres:latest
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    restart: always
+  
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=wiser@info.pt
+      - PGADMIN_DEFAULT_PASSWORD=123456
+    ports:
+      - "5050:80"
+    restart: always
