@@ -17,7 +17,7 @@ export class Incomes {
     @Column()
     name: string
 
-    @Column({type:"string", nullable:true})
+    @Column({type:"varchar", nullable:true})
     description: string
 
     @Column({type: "timestamp", nullable:true})
