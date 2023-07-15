@@ -27,4 +27,9 @@ const updateIncome = async(incomeID, updatedIncome) => {
     return incomeUpdated
 }
 
-export {createIncome, findAllIncomes, updateIncome}
+const deleteIncome = async(incomeID) =>{
+    const deleted = await incomesRepository.delete(incomeID)
+    return deleted
+}
+
+export {createIncome, findAllIncomes, updateIncome, deleteIncome}

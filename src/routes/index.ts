@@ -2,7 +2,7 @@ import { Router } from "express";
 import { incomesRoutes } from "./incomes";
 import { AppDataSource } from "../data-source";
 import { Incomes } from "../entity/Incomes";
-import { createIncome, findAllIncomes, updateIncome } from "../incomes/incomesRepository";
+import { createIncome, deleteIncome, findAllIncomes, updateIncome } from "../incomes/incomesRepository";
 
 
 AppDataSource.initialize().then(() => {
@@ -34,4 +34,12 @@ router.patch("/incomes/:id", async(request, response)=>{
     return response.status(201).json(incomeUpdated)
 
 })
+
+router.delete("/incomes/:id", async(request, response)=>{
+    const params = request.params
+    const deleted = deleteIncome(params.id)
+
+    return response.status(204).json(deleted)
+})
+
 export {router}
