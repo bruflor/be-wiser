@@ -3,7 +3,7 @@ import { Incomes } from "../entity/Incomes";
 
 const incomesRepository  = AppDataSource.getRepository(Incomes)
 
-const createIncome = async({amount,category, currency, description, name}) => {
+const createIncome = async({amount,category, currency, description,income_date, name}) => {
 
     const income = new Incomes()
     
@@ -11,6 +11,7 @@ const createIncome = async({amount,category, currency, description, name}) => {
     income.category = category
     income.currency = currency
     income.description = description
+    income.income_date = income_date
     income.name = name
 
     await incomesRepository.save(income)

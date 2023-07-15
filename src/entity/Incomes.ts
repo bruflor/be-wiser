@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm"
+import {Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn} from "typeorm"
 
 @Entity()
 export class Incomes {
@@ -17,7 +17,16 @@ export class Incomes {
     @Column()
     name: string
 
-    @Column()
+    @Column({type:"string", nullable:true})
     description: string
+
+    @Column({type: "timestamp", nullable:true})
+    income_date: string
+
+    @CreateDateColumn({type: "timestamp"})
+    created_at: string;
+
+    @UpdateDateColumn({type: "timestamp", nullable: true})
+    updated_at: string;
 
 }
