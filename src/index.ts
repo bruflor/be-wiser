@@ -1,5 +1,4 @@
 import express = require('express')
-import { AppDataSource } from './data-source'
 import { router } from './routes'
 
 
