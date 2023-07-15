@@ -2,11 +2,11 @@
 [] configure ORM
 
 [] incomes
-    [] create route
-    [] create model in ORM
-    [] add incomes
-    [] get incomes
-    [] update incomes
+    [x] create route
+    [x] create model in ORM
+    [x] add incomes
+    [x] get incomes
+    [x] update incomes
     [] delete incomes
 
 [] outcomes
@@ -17,4 +17,7 @@
     [] update outcomes
     [] delete outcomes
 
-[] get balance
+[] balance
+    [] get sum incomes amount
+    [] get sum outcomes amount
+    [] get balance between incomes and outcomes

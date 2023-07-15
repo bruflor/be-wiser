@@ -15,5 +15,16 @@ const createIncome = async({amount,category, currency, description, name}) => {
 
     await incomesRepository.save(income)
 }
+const findAllIncomes =async() => {
+    const all = await incomesRepository.find()
+    return all
+}
 
-export {createIncome}
+const updateIncome = async(incomeID, updatedIncome) => {
+    await incomesRepository.update(incomeID, updatedIncome)
+    const incomeUpdated = incomesRepository.findOneByOrFail({id: incomeID})
+
+    return incomeUpdated
+}
+
+export {createIncome, findAllIncomes, updateIncome}
