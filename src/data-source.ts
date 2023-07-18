@@ -3,6 +3,7 @@ require('dotenv').config()
 
 import { DataSource } from "typeorm"
 import { Incomes } from "./entity/Incomes"
+import { Outcomes } from "./entity/Outcomes"
 
 import {CreateIncomes1689366975601} from './migration/1689366975601-CreateIncomes'
 import { AddDatesColumnsIncomes1689438177752 } from "./migration/1689438177752-AddDatesColumnsIncomes"
@@ -17,7 +18,7 @@ export const AppDataSource = new DataSource({
     database: process.env.POSTGRES_DB,
     synchronize: true,
     logging: false,
-    entities: [Incomes],
+    entities: [Incomes, Outcomes],
     migrations: [CreateIncomes1689366975601, AddDatesColumnsIncomes1689438177752, CreateOutcomes1689443134672],
     // migrationsTableName:"migration_table",
     subscribers: [],

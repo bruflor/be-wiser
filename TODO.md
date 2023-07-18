@@ -7,12 +7,12 @@
     [x] add incomes
     [x] get incomes
     [x] update incomes
-    [] delete incomes
+    [x] delete incomes
 
 [] outcomes
-    [] create route
-    [] create model in ORM
-    [] add outcomes
+    [x] create route
+    [x] create model in ORM
+    [x] add outcomes
     [] get outcomes
     [] update outcomes
     [] delete outcomes
