@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createIncome, findAllIncomes, updateIncome, deleteIncome } from "../incomes/incomesRepository";
+import { createIncome, findAllIncomes, updateIncome, deleteIncome, findByMonth } from "../incomes/incomesRepository";
 
 const incomesRoutes = Router()
 
@@ -13,6 +13,13 @@ incomesRoutes.post("/", async(request, response)=>{
 incomesRoutes.get("/", async(request, response)=>{
     const incomes = await findAllIncomes()
     response.status(200).json(incomes)
+})
+
+incomesRoutes.get("/:month", async(request, response)=>{
+    const params = request.params
+    const incomesByMonth = await findByMonth(params.month)
+
+    response.status(200).json(incomesByMonth)
 })
 
 incomesRoutes.patch("/:id", async(request, response)=>{

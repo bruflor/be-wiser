@@ -16,8 +16,8 @@ const findByMonth = async(monthSearched:string) => {
         "march":"03",
         "july": "07"
     }
-    const month = (new Date('2022-05-30').getMonth() + 1)
-    const something = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(month FROM incomes.income_date) = :month', {month: month}).getMany()    
+    const monthToSeach = (new Date('2022-05-30').getMonth() + 1)
+    const something = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(month FROM incomes.income_date) = :month', {month: monthToSeach}).getMany()    
     return  something
 }
 
@@ -68,4 +68,4 @@ const deleteIncome = async(incomeID) =>{
     return deleted
 }
 
-export {createIncome, findAllIncomes, updateIncome, deleteIncome}
+export {createIncome, findAllIncomes, updateIncome, deleteIncome, findByMonth}
