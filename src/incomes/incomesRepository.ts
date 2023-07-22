@@ -3,19 +3,41 @@ import { Incomes } from "../entity/Incomes";
 
 const incomesRepository  = AppDataSource.getRepository(Incomes)
 
-const createIncome = async({amount,category, currency, description,income_date, name}) => {
+const findByDate = async(dateReference)=>{
+ const foundIncome = await incomesRepository.findOneByOrFail({income_date: dateReference})
 
-    const income = new Incomes()
-    
-    income.amount = amount
-    income.category = category
-    income.currency = currency
-    income.description = description
-    income.income_date = income_date
-    income.name = name
-
-    await incomesRepository.save(income)
+ return foundIncome
 }
+const findByName = async(nameReference)=>{
+ const foundIncome = await incomesRepository.findOneByOrFail({name: nameReference})
+
+ return foundIncome
+}
+const findByAmount = async(amount)=>{
+ const foundIncome = await incomesRepository.findBy({amount: amount})
+
+ return foundIncome
+}
+
+const findByDateNameAmount = async({name, income_date, amount}) => {
+    const foundIncome = await incomesRepository.findOneByOrFail({name, income_date, amount})
+    return foundIncome
+}
+
+const createIncome = async(incomeBody) => {
+    
+    try{
+        const found = await findByDateNameAmount(incomeBody)
+        return { status: 200, body:{message: "Income already exists"}}
+    }
+    catch{
+        const income = incomesRepository.create(incomeBody)
+        
+        const saveInTable = await incomesRepository.save(income)
+        return {status:201, body:income}
+    }
+}
+
 const findAllIncomes =async() => {
     const all = await incomesRepository.find()
     return all

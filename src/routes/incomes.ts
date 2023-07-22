@@ -5,8 +5,9 @@ const incomesRoutes = Router()
 
 incomesRoutes.post("/", async(request, response)=>{
     const income = request.body;
-    const create = createIncome(income)
-    return response.status(201).json(create)
+    const create = await createIncome(income)
+
+    return response.status(create.status).json(create.body)
 })
 
 incomesRoutes.get("/", async(request, response)=>{
