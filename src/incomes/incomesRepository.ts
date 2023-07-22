@@ -8,6 +8,19 @@ const findByDate = async(dateReference)=>{
 
  return foundIncome
 }
+
+const findByMonth = async(monthSearched:string) => {
+    const monthsReferences = {
+        "january": "01",
+        "february": "02",
+        "march":"03",
+        "july": "07"
+    }
+    const month = (new Date('2022-05-30').getMonth() + 1)
+    const something = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(month FROM incomes.income_date) = :month', {month: month}).getMany()    
+    return  something
+}
+
 const findByName = async(nameReference)=>{
  const foundIncome = await incomesRepository.findOneByOrFail({name: nameReference})
 
