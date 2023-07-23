@@ -9,7 +9,7 @@ const findByDate = async(dateReference)=>{
  return foundIncome
 }
 
-const findByMonth = async(monthSearched:string) => {
+const findByMonthInYear = async(yearSearched:string, monthSearched:string) => {
     const monthsReferences = {
         "january": "01",
         "february": "02",
@@ -24,9 +24,18 @@ const findByMonth = async(monthSearched:string) => {
         "november":"11",
         "december":"12"
     }
-    const incomesByMonth = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(month FROM incomes.income_date) = :month', {month: monthsReferences[monthSearched]}).getMany()    
+    const incomesByMonth = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(year FROM incomes.income_date) = :year', {year: yearSearched}).andWhere('EXTRACT(month FROM incomes.income_date) = :month', {month: monthsReferences[monthSearched]}).getMany()    
     if(incomesByMonth.length >= 1 ){
         return {status: 200, body:incomesByMonth}
+    }else{
+        return {status: 200, body: {message:"there is no income registered in this month"}}
+    }
+}
+const findByYear = async(yearSearched:string) => {
+
+    const incomesByYear = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(year FROM incomes.income_date) = :year', {year: yearSearched}).getMany()    
+    if(incomesByYear.length >= 1 ){
+        return {status: 200, body:incomesByYear}
     }else{
         return {status: 200, body: {message:"there is no income registered in this month"}}
     }
@@ -79,4 +88,4 @@ const deleteIncome = async(incomeID) =>{
     return deleted
 }
 
-export {createIncome, findAllIncomes, updateIncome, deleteIncome, findByMonth}
+export {createIncome, findAllIncomes, updateIncome, deleteIncome, findByMonthInYear, findByYear}
