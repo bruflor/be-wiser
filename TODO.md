@@ -21,7 +21,7 @@
     [x] get outcomes by year
     [x] get outcomes by month
     [x] update outcomes
-    [] delete outcomes
+    [x] delete outcomes
 
 [] balance
     [] get sum incomes amount

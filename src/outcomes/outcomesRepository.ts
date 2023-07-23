@@ -81,6 +81,11 @@ const updateOutcome = async(outcomeID, outcomeBody) => {
     const updated = outcomesRepository.findBy({id: outcomeID})
 
     return updated
+}
+
+const deleteOutcome = async(outcomeID) => {
+    const deleted = await outcomesRepository.delete(outcomeID)
+    return deleted
 
 }
-export {createOutcome, findAllOutcomes,findByMonthInYear, findByYear, updateOutcome}
+export {createOutcome, findAllOutcomes,findByMonthInYear, findByYear, updateOutcome, deleteOutcome}

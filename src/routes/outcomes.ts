@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { createOutcome, findAllOutcomes, findByMonthInYear, findByYear, updateOutcome } from "../outcomes/outcomesRepository";
+import { createOutcome, deleteOutcome, findAllOutcomes, findByMonthInYear, findByYear, updateOutcome } from "../outcomes/outcomesRepository";
+import { request } from "http";
 
 
 const outcomesRoutes = Router()
@@ -35,6 +36,13 @@ outcomesRoutes.patch("/:id", async(request, response)=>{
     const updated  = await updateOutcome(params.id, body)
 
     return response.status(201).json(updated)
+})
+
+outcomesRoutes.delete("/:id", async(request, response) => {
+    const params = request.params
+
+    const deleted = await deleteOutcome(params.id)
+    return response.status(204).json(deleted)
 })
 
 export {outcomesRoutes}
