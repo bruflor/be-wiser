@@ -11,4 +11,9 @@ const createOutcome = async(outcomeBody) => {
     return savedRepository
 }
 
-export {createOutcome}
+const findAllOutcomes = async() => {
+    const all = await outcomesRepository.find()
+    return all
+}
+
+export {createOutcome, findAllOutcomes}

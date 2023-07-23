@@ -5,7 +5,10 @@
     [x] create route
     [x] create model in ORM
     [x] add incomes
+    [x] dont add income if already exists
     [x] get incomes
+    [x] get incomes by month
+    [x] get incomes by year
     [x] update incomes
     [x] delete incomes
 
@@ -13,7 +16,10 @@
     [x] create route
     [x] create model in ORM
     [x] add outcomes
-    [] get outcomes
+    [] dont add outcomes if already exists
+    [x] get outcomes
+    [] get outcomes by year
+    [] get outcomes by month
     [] update outcomes
     [] delete outcomes
 
