@@ -14,11 +14,22 @@ const findByMonth = async(monthSearched:string) => {
         "january": "01",
         "february": "02",
         "march":"03",
-        "july": "07"
+        "april": "04",
+        "may":"05",
+        "june":"06",
+        "july": "07",
+        "august":"08",
+        "september":"09",
+        "ouctober":"10",
+        "november":"11",
+        "december":"12"
     }
-    const monthToSeach = (new Date('2022-05-30').getMonth() + 1)
-    const something = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(month FROM incomes.income_date) = :month', {month: monthToSeach}).getMany()    
-    return  something
+    const incomesByMonth = await incomesRepository.createQueryBuilder("incomes").where('EXTRACT(month FROM incomes.income_date) = :month', {month: monthsReferences[monthSearched]}).getMany()    
+    if(incomesByMonth.length >= 1 ){
+        return {status: 200, body:incomesByMonth}
+    }else{
+        return {status: 200, body: {message:"there is no income registered in this month"}}
+    }
 }
 
 const findByName = async(nameReference)=>{

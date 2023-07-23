@@ -19,7 +19,7 @@ incomesRoutes.get("/:month", async(request, response)=>{
     const params = request.params
     const incomesByMonth = await findByMonth(params.month)
 
-    response.status(200).json(incomesByMonth)
+    response.status(incomesByMonth.status).json(incomesByMonth.body)
 })
 
 incomesRoutes.patch("/:id", async(request, response)=>{
