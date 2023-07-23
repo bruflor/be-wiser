@@ -8,7 +8,7 @@ outcomesRoutes.post("/", async(request, response)=>{
     const outcome = request.body
 
     const create = await createOutcome(outcome)
-    return response.status(201).json(create)
+    return response.status(create.status).json(create.body)
 })
 
 outcomesRoutes.get("/", async(request, response)=>{

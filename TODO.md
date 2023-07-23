@@ -16,7 +16,7 @@
     [x] create route
     [x] create model in ORM
     [x] add outcomes
-    [] dont add outcomes if already exists
+    [x] dont add outcomes if already exists
     [x] get outcomes
     [] get outcomes by year
     [] get outcomes by month
