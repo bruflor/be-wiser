@@ -18,8 +18,8 @@
     [x] add outcomes
     [x] dont add outcomes if already exists
     [x] get outcomes
-    [] get outcomes by year
-    [] get outcomes by month
+    [x] get outcomes by year
+    [x] get outcomes by month
     [] update outcomes
     [] delete outcomes
 
