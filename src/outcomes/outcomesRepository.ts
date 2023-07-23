@@ -4,10 +4,28 @@ import { Outcomes } from "../entity/Outcomes";
 
 const outcomesRepository = AppDataSource.getRepository(Outcomes)
 
+const findByDate = async(dateReference)=>{
+    const foundOutcome = await outcomesRepository.findOneByOrFail({outcome_date: dateReference})
+
+    return foundOutcome
+}
+
+const findByName = async(nameReference)=>{
+    const foundOutcome = await outcomesRepository.findOneByOrFail({name: nameReference})
+
+    return foundOutcome
+}
+const findByAmount = async(amount)=>{
+    const foundOutcome = await outcomesRepository.findBy({amount: amount})
+
+    return foundOutcome
+}
+
 const findByDateNameAmount = async({name, outcome_date, amount}) => {
     const foundOutcome  = await outcomesRepository.findOneByOrFail({name, outcome_date, amount})
     return foundOutcome
 }
+
 const findByMonthInYear = async(yearSearched:string, monthSearched:string) => {
     const monthsReferences = {
         "january": "01",
