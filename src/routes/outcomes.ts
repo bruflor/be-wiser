@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { createOutcome, findAllOutcomes, findByMonthInYear, findByYear } from "../outcomes/outcomesRepository";
+import { createOutcome, findAllOutcomes, findByMonthInYear, findByYear, updateOutcome } from "../outcomes/outcomesRepository";
 
 
 const outcomesRoutes = Router()
@@ -26,6 +26,15 @@ outcomesRoutes.get("/:year/:month", async(request, response)=>{
     const params = request.params
     const outcomesByYear = await findByMonthInYear(params.year, params.month)
     return response.status(outcomesByYear.status).json(outcomesByYear.body)
+})
+
+outcomesRoutes.patch("/:id", async(request, response)=>{
+    const params = request.params
+    const body = request.body
+
+    const updated  = await updateOutcome(params.id, body)
+
+    return response.status(201).json(updated)
 })
 
 export {outcomesRoutes}

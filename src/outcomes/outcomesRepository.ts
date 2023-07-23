@@ -76,4 +76,11 @@ const findAllOutcomes = async() => {
     return all
 }
 
-export {createOutcome, findAllOutcomes,findByMonthInYear, findByYear}
+const updateOutcome = async(outcomeID, outcomeBody) => {
+    await outcomesRepository.update(outcomeID, outcomeBody)
+    const updated = outcomesRepository.findBy({id: outcomeID})
+
+    return updated
+
+}
+export {createOutcome, findAllOutcomes,findByMonthInYear, findByYear, updateOutcome}

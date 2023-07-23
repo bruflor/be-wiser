@@ -20,7 +20,7 @@
     [x] get outcomes
     [x] get outcomes by year
     [x] get outcomes by month
-    [] update outcomes
+    [x] update outcomes
     [] delete outcomes
 
 [] balance
