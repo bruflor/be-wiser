@@ -37,7 +37,7 @@ const findByYear = async(yearSearched:string) => {
     if(incomesByYear.length >= 1 ){
         return {status: 200, body:incomesByYear}
     }else{
-        return {status: 200, body: {message:"there is no income registered in this month"}}
+        return {status: 200, body: {message:"there is no income registered in this year"}}
     }
 }
 
